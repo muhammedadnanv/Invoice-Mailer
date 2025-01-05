@@ -1,21 +1,11 @@
 import { motion } from "framer-motion";
-import { Mail, DollarSign, FileText, Link } from "lucide-react";
+import { Mail, Link } from "lucide-react";
 
 const features = [
   {
     icon: <Mail className="h-8 w-8" />,
     title: "Automated Invoicing",
     description: "Set up recurring invoices and let our system handle the delivery automatically.",
-  },
-  {
-    icon: <FileText className="h-8 w-8" />,
-    title: "Custom Templates",
-    description: "Create beautiful, branded invoice templates that reflect your business identity.",
-  },
-  {
-    icon: <DollarSign className="h-8 w-8" />,
-    title: "Payment Integration",
-    description: "Seamlessly integrate with popular payment platforms for faster transactions.",
   },
   {
     icon: <Link className="h-8 w-8" />,
@@ -32,7 +22,7 @@ export const Features = () => {
           <h2 className="text-4xl font-bold mb-4">Powerful Features</h2>
           <p className="text-secondary text-lg">Everything you need to manage your invoicing process</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
