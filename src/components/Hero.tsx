@@ -31,6 +31,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
+            className="space-x-4"
           >
             <Button 
               size="lg" 
@@ -39,10 +40,49 @@ export const Hero = () => {
             >
               Get Started <ArrowRight className="ml-2" />
             </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="px-8 py-6 rounded-full"
+              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Learn More
+            </Button>
           </motion.div>
         </div>
       </div>
       <div className="absolute inset-0 bg-grid-white/10 bg-grid-8 [mask-image:radial-gradient(white,transparent_70%)]" />
+      
+      {/* 3D Floating Elements */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-1/4 right-1/4 w-32 h-32 bg-primary/20 rounded-full blur-xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-secondary/20 rounded-full blur-xl"
+        />
+      </motion.div>
     </div>
   );
 };
