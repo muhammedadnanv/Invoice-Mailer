@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export const RegisterForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,6 +14,7 @@ export const RegisterForm = () => {
     setIsSubmitting(true);
 
     try {
+      // Submit form data
       const formData = new FormData(e.currentTarget);
       const response = await fetch("https://formspree.io/f/xyzyqlzy", {
         method: "POST",
@@ -24,18 +25,42 @@ export const RegisterForm = () => {
       });
 
       if (response.ok) {
-        toast({
-          title: "Registration successful!",
-          description: "Redirecting to payment...",
+        // Send confirmation email using Resend API
+        const emailResponse = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer re_C1Szqahu_3Xhg7h52vqG6v4hP3F5o5ebX`,
+          },
+          body: JSON.stringify({
+            from: "onboarding@resend.dev",
+            to: formData.get("email"),
+            subject: "Registration Confirmation - Invoice Mailer",
+            html: `
+              <h1>Thank you for registering!</h1>
+              <p>We have received your registration for Invoice Mailer.</p>
+              <p>Please wait for 10 days, and we will send your account details to this email address.</p>
+              <p>If you have any questions, please don't hesitate to contact us.</p>
+            `,
+          }),
         });
-        window.location.href = "https://rzp.io/rzp/cuNw8HlI";
+
+        if (emailResponse.ok) {
+          toast({
+            title: "Registration successful!",
+            description: "Please check your email for confirmation. We will send your account details within 10 days.",
+          });
+          window.location.href = "https://rzp.io/rzp/cuNw8HlI";
+        } else {
+          throw new Error("Failed to send confirmation email");
+        }
       } else {
         throw new Error("Failed to submit form");
       }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to submit form. Please try again.",
+        description: "Failed to process your registration. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -99,7 +124,7 @@ export const RegisterForm = () => {
                 className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-6"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Registering..." : "Register Now"}
+                {isSubmitting ? "Processing..." : "Register Now"}
               </Button>
             </motion.div>
           </form>
