@@ -50,6 +50,7 @@ export const RegisterForm = () => {
             title: "Registration successful!",
             description: "Please check your email for confirmation. We will send your account details within 10 days.",
           });
+          // Redirect to payment after successful registration and email confirmation
           window.location.href = "https://rzp.io/rzp/cuNw8HlI";
         } else {
           throw new Error("Failed to send confirmation email");
@@ -69,59 +70,90 @@ export const RegisterForm = () => {
   };
 
   return (
-    <section id="register" className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+    <section id="register" className="py-12 md:py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+          className="max-w-md mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
         >
-          <h2 className="text-3xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
             Register Your Business
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
+              className="space-y-2"
             >
               <Label htmlFor="businessName">Business Name</Label>
-              <Input required id="businessName" name="businessName" placeholder="Enter your business name" />
+              <Input 
+                required 
+                id="businessName" 
+                name="businessName" 
+                placeholder="Enter your business name"
+                className="w-full px-4 py-2"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
+              className="space-y-2"
             >
               <Label htmlFor="email">Email</Label>
-              <Input required type="email" id="email" name="email" placeholder="Enter your email" />
+              <Input 
+                required 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Enter your email"
+                className="w-full px-4 py-2"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
+              className="space-y-2"
             >
               <Label htmlFor="phone">Phone Number</Label>
-              <Input required type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
+              <Input 
+                required 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                placeholder="Enter your phone number"
+                className="w-full px-4 py-2"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
+              className="space-y-2"
             >
               <Label htmlFor="industry">Industry</Label>
-              <Input required id="industry" name="industry" placeholder="Enter your industry" />
+              <Input 
+                required 
+                id="industry" 
+                name="industry" 
+                placeholder="Enter your industry"
+                className="w-full px-4 py-2"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
+              className="pt-2"
             >
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-6"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 md:py-6 rounded-lg transition-colors"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Processing..." : "Register Now"}
