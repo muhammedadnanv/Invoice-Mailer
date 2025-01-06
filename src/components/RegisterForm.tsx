@@ -52,7 +52,7 @@ export const RegisterForm = () => {
             description: "Please check your email for confirmation. We will send your account details within 10 days.",
           });
           // Redirect to payment after successful registration and email confirmation
-          window.location.href = "https://rzp.io/rzp/cuNw8HlI";
+          window.location.href = "https://razorpay.com/payment-link/plink_PfmBQlo7TTvZKI";
         } else {
           throw new Error("Failed to send confirmation email");
         }
