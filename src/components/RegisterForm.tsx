@@ -14,7 +14,6 @@ export const RegisterForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Submit form data
       const formData = new FormData(e.currentTarget);
       const response = await fetch("https://formspree.io/f/xyzyqlzy", {
         method: "POST",
@@ -37,10 +36,12 @@ export const RegisterForm = () => {
             to: formData.get("email"),
             subject: "Registration Confirmation - Invoice Mailer",
             html: `
-              <h1>Thank you for registering!</h1>
-              <p>We have received your registration for Invoice Mailer.</p>
-              <p>Please wait for 10 days, and we will send your account details to this email address.</p>
-              <p>If you have any questions, please don't hesitate to contact us.</p>
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                <h1 style="color: #333; text-align: center;">Thank you for registering!</h1>
+                <p style="color: #666; font-size: 16px; line-height: 1.5;">We have received your registration for Invoice Mailer.</p>
+                <p style="color: #666; font-size: 16px; line-height: 1.5;">Please wait for 10 days, and we will send your account details to this email address.</p>
+                <p style="color: #666; font-size: 16px; line-height: 1.5;">If you have any questions, please don't hesitate to contact us.</p>
+              </div>
             `,
           }),
         });
@@ -153,7 +154,7 @@ export const RegisterForm = () => {
             >
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 md:py-6 rounded-lg transition-colors"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg transition-colors"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Processing..." : "Register Now"}
