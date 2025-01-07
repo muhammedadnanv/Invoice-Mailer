@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { motion } from "framer-motion";
+import { sendWelcomeEmail } from "@/utils/email";
 
 export const RegisterForm = () => {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -36,6 +37,9 @@ export const RegisterForm = () => {
       });
 
       if (formResponse.ok) {
+        // Send welcome email using Resend
+        await sendWelcomeEmail(email, name);
+        
         toast({
           title: "Registration successful!",
           description: "Redirecting to payment...",
