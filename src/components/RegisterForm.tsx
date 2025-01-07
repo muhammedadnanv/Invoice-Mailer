@@ -34,11 +34,11 @@ export const RegisterForm = () => {
           body: JSON.stringify({
             from: "onboarding@resend.dev",
             to: formData.get("email"),
-            subject: "Registration Confirmation - Invoice Mailer",
+            subject: "Registration Confirmation - Imalier",
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                 <h1 style="color: #333; text-align: center;">Thank you for registering!</h1>
-                <p style="color: #666; font-size: 16px; line-height: 1.5;">We have received your registration for Invoice Mailer.</p>
+                <p style="color: #666; font-size: 16px; line-height: 1.5;">We have received your registration for Imalier.</p>
                 <p style="color: #666; font-size: 16px; line-height: 1.5;">Please wait for 10 days, and we will send your account details to this email address.</p>
                 <p style="color: #666; font-size: 16px; line-height: 1.5;">If you have any questions, please don't hesitate to contact us.</p>
               </div>
@@ -72,18 +72,18 @@ export const RegisterForm = () => {
 
   return (
     <section id="register" className="py-12 md:py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
-      <div className="container px-4 mx-auto">
+      <div className="container px-4 sm:px-6 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-md mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+          className="max-w-md mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
             Register Your Business
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
