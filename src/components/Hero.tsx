@@ -11,7 +11,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600"
           >
             Welcome to Imalier
           </motion.h1>
@@ -19,7 +19,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-secondary space-y-2 sm:space-y-3 md:space-y-4 mb-6 sm:mb-8 px-4 sm:px-0"
+            className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 space-y-3 sm:space-y-4 mb-8 sm:mb-10 px-4 sm:px-0"
           >
             <p className="leading-relaxed">With Imalier, sending invoices has never been easier!</p>
             <p className="leading-relaxed">All you need to do is type in your details and your client's information, then simply click 'Send Invoice.'</p>
@@ -35,29 +35,38 @@ export const Hero = () => {
           >
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg transition-all duration-300 ease-in-out transform hover:scale-105"
-              onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full text-base sm:text-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+              onClick={() => {
+                const element = document.getElementById('register');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              aria-label="Get Started with Registration"
             >
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
+              Get Started <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg transition-all duration-300 ease-in-out transform hover:scale-105"
-              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto px-8 py-4 rounded-full text-base sm:text-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+              onClick={() => {
+                const element = document.getElementById('features');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              aria-label="Learn More About Features"
             >
               Learn More
             </Button>
           </motion.div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-grid-white/10 bg-grid-8 [mask-image:radial-gradient(white,transparent_70%)]" />
+      <div className="absolute inset-0 bg-grid-white/10 bg-grid-8 [mask-image:radial-gradient(white,transparent_70%)]" aria-hidden="true" />
       
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
       >
         <motion.div
           animate={{

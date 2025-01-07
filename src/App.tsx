@@ -8,8 +8,7 @@ import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
-// Use the publishable key
-const publishableKey = "pk_test_c3Ryb25nLWRpbmdvLTQwLmNsZXJrLmFjY291bnRzLmRldiQ";
+const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || "pk_test_c3Ryb25nLWRpbmdvLTQwLmNsZXJrLmFjY291bnRzLmRldiQ";
 
 const App = () => (
   <ClerkProvider publishableKey={publishableKey}>
