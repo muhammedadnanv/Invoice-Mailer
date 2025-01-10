@@ -6,26 +6,17 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { useQuery } from "@tanstack/react-query";
 
 const Catalogs = () => {
-  const { isLoaded, userId, isSignedIn } = useAuth();
+  const { userId } = useAuth();
   const { toast } = useToast();
-  const navigate = useNavigate();
   const [catalog, setCatalog] = useState({
     name: "",
     description: "",
     price: "",
     imageUrl: "",
   });
-
-  // Redirect to sign-in if not authenticated
-  if (isLoaded && !isSignedIn) {
-    navigate("/sign-in");
-    return null;
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,10 +51,6 @@ const Catalogs = () => {
       });
     }
   };
-
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="container mx-auto px-4 py-8">
