@@ -10,19 +10,19 @@ import Invoices from "./pages/Invoices";
 import Catalogs from "./pages/Catalogs";
 import Menus from "./pages/Menus";
 
+// Initialize QueryClient outside of component
+const queryClient = new QueryClient();
+
+// Ensure CLERK_PUBLISHABLE_KEY exists
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Clerk Publishable Key");
 }
-
-const queryClient = new QueryClient();
 
 function App() {
   return (
     <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
@@ -34,6 +34,8 @@ function App() {
               <Route path="/sign-up/*" element={<SignUp />} />
             </Routes>
           </BrowserRouter>
+          <Toaster />
+          <Sonner />
         </TooltipProvider>
       </QueryClientProvider>
     </ClerkProvider>
