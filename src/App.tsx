@@ -7,6 +7,8 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Invoices from "./pages/Invoices";
+import Catalogs from "./pages/Catalogs";
+import Menus from "./pages/Menus";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/invoices" element={<Invoices />} />
+            <Route path="/catalogs" element={<Catalogs />} />
+            <Route path="/menus" element={<Menus />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

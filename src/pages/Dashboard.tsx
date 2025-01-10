@@ -2,13 +2,17 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { FileText, Package, Menu } from "lucide-react";
+import { useUser } from "@clerk/clerk-react";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { user } = useUser();
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Business Management Platform</h1>
+      <h1 className="text-3xl font-bold mb-2">Welcome, {user?.firstName || 'User'}!</h1>
+      <p className="text-gray-600 mb-8">Manage your business from one central dashboard</p>
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="p-6 hover:shadow-lg transition-shadow">
           <FileText className="w-12 h-12 text-primary mb-4" />
