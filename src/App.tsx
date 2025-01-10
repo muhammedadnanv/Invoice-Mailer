@@ -1,3 +1,4 @@
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -34,55 +35,53 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
-          <TooltipProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/sign-in/*" element={<SignIn />} />
-                <Route path="/sign-up/*" element={<SignUp />} />
-                <Route 
-                  path="/dashboard" 
-                  element={
-                    <ProtectedRoute>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  } 
-                />
-                <Route 
-                  path="/invoices" 
-                  element={
-                    <ProtectedRoute>
-                      <Invoices />
-                    </ProtectedRoute>
-                  } 
-                />
-                <Route 
-                  path="/catalogs" 
-                  element={
-                    <ProtectedRoute>
-                      <Catalogs />
-                    </ProtectedRoute>
-                  } 
-                />
-                <Route 
-                  path="/menus" 
-                  element={
-                    <ProtectedRoute>
-                      <Menus />
-                    </ProtectedRoute>
-                  } 
-                />
-              </Routes>
-              <Toaster />
-              <Sonner />
-            </BrowserRouter>
-          </TooltipProvider>
-        </ClerkProvider>
-      </QueryClientProvider>
-    </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
+        <TooltipProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/sign-in/*" element={<SignIn />} />
+              <Route path="/sign-up/*" element={<SignUp />} />
+              <Route 
+                path="/dashboard" 
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/invoices" 
+                element={
+                  <ProtectedRoute>
+                    <Invoices />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/catalogs" 
+                element={
+                  <ProtectedRoute>
+                    <Catalogs />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/menus" 
+                element={
+                  <ProtectedRoute>
+                    <Menus />
+                  </ProtectedRoute>
+                } 
+              />
+            </Routes>
+            <Toaster />
+            <Sonner />
+          </BrowserRouter>
+        </TooltipProvider>
+      </ClerkProvider>
+    </QueryClientProvider>
   );
 }
 
