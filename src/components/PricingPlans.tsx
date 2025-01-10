@@ -42,17 +42,17 @@ export const PricingPlans = () => {
           <Card className="relative border-2 border-gray-100 hover:border-primary/50 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-2xl">Basic</CardTitle>
-              <CardDescription>Perfect for small businesses</CardDescription>
+              <CardDescription>1 Day Access</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
-                <span className="text-4xl font-bold">₹499</span>
-                <span className="text-gray-500">/month</span>
+                <span className="text-4xl font-bold">₹500</span>
+                <span className="text-gray-500">.00</span>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
-                  <span>Up to 50 menu items</span>
+                  <span>1 day access to all features</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
@@ -74,24 +74,24 @@ export const PricingPlans = () => {
             </CardFooter>
           </Card>
 
-          {/* Pro Plan */}
+          {/* Premium Plan */}
           <Card className="relative border-2 border-primary transform scale-105 shadow-lg">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm">
               Most Popular
             </div>
             <CardHeader>
-              <CardTitle className="text-2xl">Pro</CardTitle>
-              <CardDescription>For growing restaurants</CardDescription>
+              <CardTitle className="text-2xl">Premium</CardTitle>
+              <CardDescription>5 Days Access</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
-                <span className="text-4xl font-bold">₹999</span>
-                <span className="text-gray-500">/month</span>
+                <span className="text-4xl font-bold">₹500</span>
+                <span className="text-gray-500">.00</span>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited menu items</span>
+                  <span>5 days access to all features</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
@@ -117,21 +117,21 @@ export const PricingPlans = () => {
             </CardFooter>
           </Card>
 
-          {/* Enterprise Plan */}
+          {/* Ultra Premium Plan */}
           <Card className="relative border-2 border-gray-100 hover:border-primary/50 transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl">Enterprise</CardTitle>
-              <CardDescription>For large restaurant chains</CardDescription>
+              <CardTitle className="text-2xl">Ultra Premium</CardTitle>
+              <CardDescription>10 Days Access</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
-                <span className="text-4xl font-bold">₹1999</span>
-                <span className="text-gray-500">/month</span>
+                <span className="text-4xl font-bold">₹500</span>
+                <span className="text-gray-500">.00</span>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
-                  <span>All Pro features</span>
+                  <span>10 days access to all features</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
