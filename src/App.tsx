@@ -36,8 +36,8 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   return (
-    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
         <TooltipProvider>
           <BrowserRouter>
             <Routes>
@@ -77,12 +77,12 @@ function App() {
                 } 
               />
             </Routes>
+            <Toaster />
+            <Sonner />
           </BrowserRouter>
-          <Toaster />
-          <Sonner />
         </TooltipProvider>
-      </QueryClientProvider>
-    </ClerkProvider>
+      </ClerkProvider>
+    </QueryClientProvider>
   );
 }
 
