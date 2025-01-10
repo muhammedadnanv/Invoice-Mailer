@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth, RedirectToSignIn } from "@clerk/clerk-react";
 
 const Catalogs = () => {
+  const { isLoaded, userId } = useAuth();
   const { toast } = useToast();
   const [catalog, setCatalog] = useState({
     name: "",
@@ -14,6 +16,11 @@ const Catalogs = () => {
     price: "",
     imageUrl: "",
   });
+
+  // Show sign-in page if user is not authenticated
+  if (!isLoaded || !userId) {
+    return <RedirectToSignIn />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
