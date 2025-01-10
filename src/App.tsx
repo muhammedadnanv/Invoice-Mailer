@@ -23,7 +23,11 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isLoaded, isSignedIn } = useAuth();
 
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
   }
 
   if (!isSignedIn) {
@@ -39,43 +43,65 @@ function App() {
       <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
         <TooltipProvider>
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/sign-in/*" element={<SignIn />} />
-              <Route path="/sign-up/*" element={<SignUp />} />
-              <Route 
-                path="/dashboard" 
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/invoices" 
-                element={
-                  <ProtectedRoute>
-                    <Invoices />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/catalogs" 
-                element={
-                  <ProtectedRoute>
-                    <Catalogs />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/menus" 
-                element={
-                  <ProtectedRoute>
-                    <Menus />
-                  </ProtectedRoute>
-                } 
-              />
-            </Routes>
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-grow">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route 
+                    path="/sign-in/*" 
+                    element={
+                      <div className="min-h-screen flex items-center justify-center p-4">
+                        <div className="w-full max-w-md">
+                          <SignIn routing="path" path="/sign-in" />
+                        </div>
+                      </div>
+                    } 
+                  />
+                  <Route 
+                    path="/sign-up/*" 
+                    element={
+                      <div className="min-h-screen flex items-center justify-center p-4">
+                        <div className="w-full max-w-md">
+                          <SignUp routing="path" path="/sign-up" />
+                        </div>
+                      </div>
+                    } 
+                  />
+                  <Route 
+                    path="/dashboard" 
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/invoices" 
+                    element={
+                      <ProtectedRoute>
+                        <Invoices />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/catalogs" 
+                    element={
+                      <ProtectedRoute>
+                        <Catalogs />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/menus" 
+                    element={
+                      <ProtectedRoute>
+                        <Menus />
+                      </ProtectedRoute>
+                    } 
+                  />
+                </Routes>
+              </main>
+            </div>
             <Toaster />
             <Sonner />
           </BrowserRouter>
