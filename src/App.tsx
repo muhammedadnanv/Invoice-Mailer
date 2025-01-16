@@ -14,11 +14,7 @@ import Menus from "./pages/Menus";
 const queryClient = new QueryClient();
 
 // Get the publishable key from environment variables
-const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!CLERK_PUBLISHABLE_KEY) {
-  console.error("Missing Clerk Publishable Key. Please check your environment variables.");
-}
+const CLERK_PUBLISHABLE_KEY = "pk_test_dW5pcXVlLWFwZS00Ny5jbGVyay5hY2NvdW50cy5kZXYk";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isLoaded, isSignedIn } = useAuth();
@@ -39,18 +35,6 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 function App() {
-  // If there's no publishable key, show a more user-friendly message
-  if (!CLERK_PUBLISHABLE_KEY) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-2">Configuration Error</h1>
-          <p className="text-gray-600">Authentication is not properly configured.</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
       <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
